@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolix - Download Videos, Enhance Images, Convert Files & More</title>
+    <meta name="description" content="Toolix provides free online tools to download videos from social media, enhance images, compress files, convert text to PDF, and split PDF documents.">
+    <meta name="keywords" content="toolix, video downloader, youtube downloader, image enhancer, image compressor, text to pdf, pdf splitter, online tools">
+    <meta name="author" content="toolixhost">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f9c74f;
+            --danger: #f94144;
+            --gray: #6c757d;
+            --gradient: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234361ee" opacity="0.1"/><path d="M0 0L100 100" stroke="%234361ee" stroke-width="2" opacity="0.2"/><path d="M100 0L0 100" stroke="%234361ee" stroke-width="2" opacity="0.2"/></svg>');
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background: #e51278;
+            transform: translateY(-2px);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Tools Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+        
+        .tool-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .tool-header i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .tool-header h2 {
+            color: var(--primary);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .input-group input, 
+        .input-group select, 
+        .input-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .input-group input:focus, 
+        .input-group select:focus, 
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .file-upload {
+            border: 2px dashed #cbd5e0;
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.05);
+        }
+        
+        .file-upload i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .preview-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .preview-container img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option-card {
+            background: #f8fafc;
+            border-radius: var(--radius);
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .option-card:hover, .option-card.selected {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        .tool-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* Ads */
+        .ad-container {
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .ad-label {
+            display: inline-block;
+            background: #e2e8f0;
+            color: var(--gray);
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .ad-placeholder {
+            width: 100%;
+            height: 150px;
+            background: #f1f5f9;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .ad-banner {
+            width: 100%;
+            height: 90px;
+            background: #f1f5f9;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: 500;
+            margin: 20px 0;
+        }
+        
+        /* Premium Section */
+        .premium-section {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: var(--radius);
+            margin: 60px 0;
+        }
+        
+        .premium-section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        .premium-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+        }
+        
+        .benefit-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-actions {
+                flex-direction: column;
+            }
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(67, 97, 238, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                <span>Toolix</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#video-downloader">Video Downloader</a></li>
+                    <li><a href="#image-enhancer">Image Enhancer</a></li>
+                    <li><a href="#image-compressor">Image Compressor</a></li>
+                    <li><a href="#text-to-pdf">Text to PDF</a></li>
+                    <li><a href="#pdf-splitter">PDF Splitter</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <button class="btn btn-primary" id="login-btn"><i class="fab fa-google"></i> Login with Google</button>
+                <button class="btn btn-outline" id="premium-btn">Go Premium</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>All Online Tools You Need in One Place</h1>
+            <p>Toolix provides free online tools to download videos from social media, enhance images, compress files, convert text to PDF, and split PDF documents.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-accent"><i class="fas fa-bolt"></i> Start Using Tools</button>
+                <button class="btn btn-outline"><i class="fas fa-crown"></i> Try Premium</button>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Video Downloader</h3>
+                    <p>Download videos from any social media platform in MP4 or MP3 format</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Image Enhancer</h3>
+                    <p>Enhance your images quality with our advanced AI technology</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <h3>Image Compressor</h3>
+                    <p>Compress images without losing quality for faster websites</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Text to PDF</h3>
+                    <p>Convert your text documents to PDF format with ease</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>PDF Splitter</h3>
+                    <p>Split PDF documents into multiple files or extract specific pages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            Advertisement - Banner Ad Here
+        </div>
+    </div>
+    
+    <!-- Video Downloader Tool -->
+    <section class="tool-section" id="video-downloader">
+        <div class="container">
+            <div class="tool-header">
+                <i class="fas fa-download"></i>
+                <h2>Video Downloader</h2>
+            </div>
+            
+            <p>Download videos from YouTube, Facebook, Instagram, Twitter, TikTok and more by pasting the URL below.</p>
+            
+            <div class="input-group">
+                <label for="video-url">Paste Video URL</label>
+                <input type="url" id="video-url" placeholder="https://www.youtube.com/watch?v=..." />
+            </div>
+            
+            <div class="options-grid">
+                <div class="option-card selected" data-format="mp4">
+                    <i class="fas fa-film"></i>
+                    <h4>MP4 Video</h4>
+                    <p>Download as video file</p>
+                </div>
+                
+                <div class="option-card" data-format="mp3">
+                    <i class="fas fa-music"></i>
+                    <h4>MP3 Audio</h4>
+                    <p>Extract audio only</p>
+                </div>
+            </div>
+            
+            <div class="input-group" id="quality-options">
+                <label for="video-quality">Select Quality</label>
+                <select id="video-quality">
+                    <option value="1080p">Full HD (1080p)</option>
+                    <option value="720p">HD (720p)</option>
+                    <option value="480p">SD (480p)</option>
+                    <option value="360p">Low (360p)</option>
+                </select>
+            </div>
+            
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="download-video-btn"><i class="fas fa-download"></i> Download Now</button>
+            </div>
+            
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <div class="ad-placeholder">
+                    Interstitial Ad Here
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Image Enhancer Tool -->
+    <section class="tool-section" id="image-enhancer">
+        <div class="container">
+            <div class="tool-header">
+                <i class="fas fa-magic"></i>
+                <h2>Image Enhancer</h2>
+            </div>
+            
+            <p>Upload an image to enhance its quality using our AI-powered image enhancement technology.</p>
+            
+            <div class="file-upload" id="enhancer-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload an image or drag and drop</p>
+                <p>JPG, PNG, WebP up to 10MB</p>
+            </div>
+            
+            <div class="preview-container">
+                <img id="enhancer-preview" src="" alt="Preview" style="display: none;" />
+            </div>
+            
+            <div class="options-grid">
+                <div class="option-card selected" data-enhance="auto">
+                    <i class="fas fa-robot"></i>
+                    <h4>Auto Enhance</h4>
+                    <p>AI-powered automatic enhancement</p>
+                </div>
+                
+                <div class="option-card" data-enhance="sharpness">
+                    <i class="fas fa-crosshairs"></i>
+                    <h4>Increase Sharpness</h4>
+                    <p>Make image clearer</p>
+                </div>
+                
+                <div class="option-card" data-enhance="brightness">
+                    <i class="fas fa-sun"></i>
+                    <h4>Adjust Brightness</h4>
+                    <p>Fix dark images</p>
+                </div>
+                
+                <div class="option-card" data-enhance="colors">
+                    <i class="fas fa-palette"></i>
+                    <h4>Enhance Colors</h4>
+                    <p>Make colors pop</p>
+                </div>
+            </div>
+            
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="enhance-btn" disabled><i class="fas fa-magic"></i> Enhance Image</button>
+                <button class="btn btn-outline" id="download-enhanced-btn" disabled><i class="fas fa-download"></i> Download Enhanced Image</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            Advertisement - Banner Ad Here
+        </div>
+    </div>
+    
+    <!-- Image Compressor Tool -->
+    <section class="tool-section" id="image-compressor">
+        <div class="container">
+            <div class="tool-header">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <h2>Image Compressor</h2>
+            </div>
+            
+            <p>Compress your images to reduce file size without noticeable quality loss.</p>
+            
+            <div class="file-upload" id="compressor-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload an image or drag and drop</p>
+                <p>JPG, PNG, WebP up to 10MB</p>
+            </div>
+            
+            <div class="preview-container">
+                <img id="compressor-preview" src="" alt="Preview" style="display: none;" />
+            </div>
+            
+            <div class="input-group">
+                <label for="compression-level">Compression Level</label>
+                <input type="range" id="compression-level" min="0" max="100" value="80" />
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Smaller Size</span>
+                    <span>Better Quality</span>
+                </div>
+            </div>
+            
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="compress-btn" disabled><i class="fas fa-compress-arrows-alt"></i> Compress Image</button>
+                <button class="btn btn-outline" id="download-compressed-btn" disabled><i class="fas fa-download"></i> Download Compressed Image</button>
+            </div>
+            
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <div class="ad-placeholder">
+                    Interstitial Ad Here
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Text to PDF Tool -->
+    <section class="tool-section" id="text-to-pdf">
+        <div class="container">
+            <div class="tool-header">
+                <i class="fas fa-file-pdf"></i>
+                <h2>Text to PDF Converter</h2>
+            </div>
+            
+            <p>Convert your text to PDF format with customizable options.</p>
+            
+            <div class="input-group">
+                <label for="pdf-title">Document Title</label>
+                <input type="text" id="pdf-title" placeholder="My Document" />
+            </div>
+            
+            <div class="input-group">
+                <label for="pdf-content">Your Text</label>
+                <textarea id="pdf-content" rows="10" placeholder="Enter your text here..."></textarea>
+            </div>
+            
+            <div class="options-grid">
+                <div class="option-card selected" data-size="a4">
+                    <i class="fas fa-file"></i>
+                    <h4>A4 Size</h4>
+                    <p>Standard document size</p>
+                </div>
+                
+                <div class="option-card" data-size="letter">
+                    <i class="fas fa-file"></i>
+                    <h4>Letter Size</h4>
+                    <p>US letter format</p>
+                </div>
+            </div>
+            
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="generate-pdf-btn"><i class="fas fa-file-pdf"></i> Generate PDF</button>
+                <button class="btn btn-outline" id="download-pdf-btn" disabled><i class="fas fa-download"></i> Download PDF</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            Advertisement - Banner Ad Here
+        </div>
+    </div>
+    
+    <!-- PDF Splitter Tool -->
+    <section class="tool-section" id="pdf-splitter">
+        <div class="container">
+            <div class="tool-header">
+                <i class="fas fa-cut"></i>
+                <h2>PDF Splitter</h2>
+            </div>
+            
+            <p>Upload a PDF file and select pages to extract or split.</p>
+            
+            <div class="file-upload" id="pdf-upload">
+                <i class="fas fa-file-pdf"></i>
+                <p>Click to upload a PDF file or drag and drop</p>
+                <p>PDF files up to 20MB</p>
+            </div>
+            
+            <div class="input-group">
+                <label for="page-range">Pages to Extract (e.g., 1-5, 8, 11-13)</label>
+                <input type="text" id="page-range" placeholder="1-5, 8, 11-13" disabled />
+            </div>
+            
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="split-pdf-btn" disabled><i class="fas fa-cut"></i> Split PDF</button>
+                <button class="btn btn-outline" id="download-split-btn" disabled><i class="fas fa-download"></i> Download Extracted Pages</button>
+            </div>
+            
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <div class="ad-placeholder">
+                    Interstitial Ad Here
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Premium Section -->
+    <section class="premium-section">
+        <div class="container">
+            <h2>Go Premium for Enhanced Experience</h2>
+            <p>Upgrade to Toolix Premium to enjoy an ad-free experience, faster processing, and priority support.</p>
+            
+            <div class="benefits">
+                <div class="benefit-card">
+                    <i class="fas fa-ad"></i>
+                    <h3>Ad-Free Experience</h3>
+                    <p>No more interruptions from ads</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Faster Processing</h3>
+                    <p>Priority processing for all tools</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <h3>Unlimited Downloads</h3>
+                    <p>No limits on file sizes or downloads</p>
+                </div>
+            </div>
+            
+            <div class="pricing">
+                <h3>Only $5 per month</h3>
+                <p>Pay with USDT (BNB Smart Chain)</p>
+                <div class="input-group" style="max-width: 500px; margin: 20px auto;">
+                    <input type="text" value="0x2731b262528bb8b25eb7fb4db59f477ecafd43d4" readonly style="text-align: center; font-family: monospace;" />
+                </div>
+                <button class="btn btn-accent"><i class="fas fa-crown"></i> Upgrade to Premium</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Toolix</h3>
+                    <p>Your all-in-one solution for online tools. We provide fast, reliable, and free tools to make your digital life easier.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#video-downloader">Video Downloader</a></li>
+                        <li><a href="#image-enhancer">Image Enhancer</a></li>
+                        <li><a href="#image-compressor">Image Compressor</a></li>
+                        <li><a href="#text-to-pdf">Text to PDF</a></li>
+                        <li><a href="#pdf-splitter">PDF Splitter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Toolix. All rights reserved. Made with ❤️ by toolixhost</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <h2>Login with Google</h2>
+            <p>Sign in to access your tools and preferences across devices.</p>
+            <button class="btn btn-primary" style="width: 100%;"><i class="fab fa-google"></i> Continue with Google</button>
+            <div class="modal-buttons">
+                <button class="btn btn-outline" id="close-login-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Premium Modal -->
+    <div class="modal" id="premium-modal">
+        <div class="modal-content">
+            <h2>Go Premium</h2>
+            <p>Upgrade to Toolix Premium to enjoy an ad-free experience, faster processing, and priority support.</p>
+            
+            <div class="input-group">
+                <input type="text" value="0x2731b262528bb8b25eb7fb4db59f477ecafd43d4" readonly style="text-align: center; font-family: monospace;" />
+            </div>
+            
+            <p>Send exactly $5 worth of USDT to this BNB Smart Chain address.</p>
+            
+            <div class="modal-buttons">
+                <button class="btn btn-accent"><i class="fas fa-crown"></i> I've Paid</button>
+                <button class="btn btn-outline" id="close-premium-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login Modal
+            const loginBtn = document.getElementById('login-btn');
+            const loginModal = document.getElementById('login-modal');
+            const closeLoginModal = document.getElementById('close-login-modal');
+            
+            loginBtn.addEventListener('click', function() {
+                loginModal.style.display = 'flex';
+            });
+            
+            closeLoginModal.addEventListener('click', function() {
+                loginModal.style.display = 'none';
+            });
+            
+            // Premium Modal
+            const premiumBtn = document.getElementById('premium-btn');
+            const premiumModal = document.getElementById('premium-modal');
+            const closePremiumModal = document.getElementById('close-premium-modal');
+            
+            premiumBtn.addEventListener('click', function() {
+                premiumModal.style.display = 'flex';
+            });
+            
+            closePremiumModal.addEventListener('click', function() {
+                premiumModal.style.display = 'none';
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+                if (event.target === premiumModal) {
+                    premiumModal.style.display = 'none';
+                }
+            });
+            
+            // Format selection for video downloader
+            const formatOptions = document.querySelectorAll('.option-card[data-format]');
+            formatOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    formatOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Show/hide quality options based on format
+                    const qualityOptions = document.getElementById('quality-options');
+                    if (this.dataset.format === 'mp3') {
+                        qualityOptions.style.display = 'none';
+                    } else {
+                        qualityOptions.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Enhance option selection
+            const enhanceOptions = document.querySelectorAll('.option-card[data-enhance]');
+            enhanceOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    enhanceOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+            
+            // File upload for image enhancer
+            const enhancerUpload = document.getElementById('enhancer-upload');
+            const enhancerPreview = document.getElementById('enhancer-preview');
+            const enhanceBtn = document.getElementById('enhance-btn');
+            
+            enhancerUpload.addEventListener('click', function() {
+                // Simulate file input click
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.onchange = function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            enhancerPreview.src = event.target.result;
+                            enhancerPreview.style.display = 'block';
+                            enhanceBtn.disabled = false;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+                input.click();
+            });
+            
+            // File upload for image compressor
+            const compressorUpload = document.getElementById('compressor-upload');
+            const compressorPreview = document.getElementById('compressor-preview');
+            const compressBtn = document.getElementById('compress-btn');
+            
+            compressorUpload.addEventListener('click', function() {
+                // Simulate file input click
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.onchange = function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            compressorPreview.src = event.target.result;
+                            compressorPreview.style.display = 'block';
+                            compressBtn.disabled = false;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+                input.click();
+            });
+            
+            // File upload for PDF splitter
+            const pdfUpload = document.getElementById('pdf-upload');
+            const pageRange = document.getElementById('page-range');
+            const splitPdfBtn = document.getElementById('split-pdf-btn');
+            
+            pdfUpload.addEventListener('click', function() {
+                // Simulate file input click
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.pdf';
+                input.onchange = function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        pageRange.disabled = false;
+                        splitPdfBtn.disabled = false;
+                    }
+                };
+                input.click();
+            });
+            
+            // Download buttons simulation
+            const downloadVideoBtn = document.getElementById('download-video-btn');
+            const downloadEnhancedBtn = document.getElementById('download-enhanced-btn');
+            const downloadCompressedBtn = document.getElementById('download-compressed-btn');
+            const downloadPdfBtn = document.getElementById('download-pdf-btn');
+            const downloadSplitBtn = document.getElementById('download-split-btn');
+            
+            // Show ad and then simulate download
+            function simulateDownload(button, filename) {
+                button.addEventListener('click', function() {
+                    // Show ad container
+                    const adContainer = document.createElement('div');
+                    adContainer.className = 'ad-container';
+                    adContainer.innerHTML = `
+                        <span class="ad-label">Advertisement</span>
+                        <div class="ad-placeholder">
+                            App Open Ad Here<br>
+                            <button class="btn btn-primary" style="margin-top: 10px;">Continue Download</button>
+                        </div>
+                    `;
+                    
+                    // Insert before the button
+                    button.parentNode.insertBefore(adContainer, button);
+                    
+                    // Simulate download after ad
+                    adContainer.querySelector('button').addEventListener('click', function() {
+                        adContainer.remove();
+                        
+                        // Show loading
+                        const originalText = button.innerHTML;
+                        button.innerHTML = '<div class="spinner"></div>';
+                        button.disabled = true;
+                        
+                        // Simulate processing
+                        setTimeout(() => {
+                            button.innerHTML = originalText;
+                            button.disabled = false;
+                            
+                            // Create and trigger download
+                            const a = document.createElement('a');
+                            a.href = 'data:application/octet-stream,';
+                            a.download = filename;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                        }, 2000);
+                    });
+                });
+            }
+            
+            simulateDownload(downloadVideoBtn, 'downloaded_video.mp4');
+            simulateDownload(downloadEnhancedBtn, 'enhanced_image.jpg');
+            simulateDownload(downloadCompressedBtn, 'compressed_image.jpg');
+            simulateDownload(downloadPdfBtn, 'converted_document.pdf');
+            simulateDownload(downloadSplitBtn, 'extracted_pages.pdf');
+            
+            // Enhance image button
+            enhanceBtn.addEventListener('click', function() {
+                // Show loading
+                const originalText = this.innerHTML;
+                this.innerHTML = '<div class="spinner"></div>';
+                this.disabled = true;
+                
+                // Simulate processing
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                    downloadEnhancedBtn.disabled = false;
+                    
+                    // Show enhanced image (in real app, this would be the processed image)
+                    enhancerPreview.style.filter = 'brightness(1.2) contrast(1.1) saturate(1.2)';
+                }, 3000);
+            });
+            
+            // Compress image button
+            compressBtn.addEventListener('click', function() {
+                // Show loading
+                const originalText = this.innerHTML;
+                this.innerHTML = '<div class="spinner"></div>';
+                this.disabled = true;
+                
+                // Simulate processing
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                    downloadCompressedBtn.disabled = false;
+                    
+                    // Show success message
+                    const compressionLevel = document.getElementById('compression-level').value;
+                    alert(`Image compressed successfully! Size reduced by ${compressionLevel}%`);
+                }, 3000);
+            });
+            
+            // Generate PDF button
+            const generatePdfBtn = document.getElementById('generate-pdf-btn');
+            generatePdfBtn.addEventListener('click', function() {
+                // Show loading
+                const originalText = this.innerHTML;
+                this.innerHTML = '<div class="spinner"></div>';
+                this.disabled = true;
+                
+                // Simulate processing
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                    downloadPdfBtn.disabled = false;
+                    
+                    alert('PDF generated successfully!');
+                }, 2000);
+            });
+            
+            // Split PDF button
+            splitPdfBtn.addEventListener('click', function() {
+                // Show loading
+                const originalText = this.innerHTML;
+                this.innerHTML = '<div class="spinner"></div>';
+                this.disabled = true;
+                
+                // Simulate processing
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                    downloadSplitBtn.disabled = false;
+                    
+                    alert('PDF split successfully!');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
